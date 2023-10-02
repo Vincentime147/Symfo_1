@@ -10,38 +10,17 @@ use Symfony\Component\Routing\Annotation\Route;
 //use Twig\Environment;
 
 
-class HomeController extends AbstractController {
-
-public function accueil() { //route déclaré dans le "routes.yaml"
-    return $this->render('Assuka.php');
-    
+class HomeController extends AbstractController 
+{
+    //route déclaré dans le "routes.yaml"
+    public function accueil() { 
+        return $this->render('Accueil.php');     
     }
- public function bonjour() { //route déclaré dans le "routes.yaml"
- return new Response('Bonjour à toutes et à tous!!');
+    
+    #[Route('/asuka')] //Redirection vers une vrai page
+    public function assuka(): Response 
+    {
+        return $this->render('Assuka.php');
 
- }
-
- #[Route('/asuka')]
- public function asuka() {
- return new Response('Welcome to my Asuka WOLD!');
-
- }
- #[Route('/no')] //redirige vers le roote déclaré dans "routes.yaml"
- public function no() {
-    return $this->redirectToRoute('bonjour');
- }
-
-
- #[Route('/google')]
- public function google() {
-    return $this->redirect('https://www.google.com');
- }
-
-
- #[Route('/assuka')]
- public function assuka(): Response //Redirection vers une vrai page
- {
-    return $this->render('Assuka.php');
-
- }
+    }
 }
