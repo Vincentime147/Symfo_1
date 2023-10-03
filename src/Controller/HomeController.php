@@ -16,11 +16,15 @@ class HomeController extends AbstractController
     public function accueil() { 
         return $this->render('Accueil.php');     
     }
-    
+
     #[Route('/asuka')] //Redirection vers une vrai page
     public function assuka(): Response 
     {
         return $this->render('Assuka.php');
 
     }
+    #[Route('/')] 
+    public function index2() {
+        return $this->redirectToRoute('accueil');
+    } 
 }
